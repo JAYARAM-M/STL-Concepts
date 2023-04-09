@@ -1,0 +1,382 @@
+Stack
+
+push
+pop
+top
+size
+swap
+emplace
+empty
+1)swap the stacks
+
+#include<iostream>
+
+#include<stack>
+using namespace std;
+
+int main()
+{
+    stack<char> c1,c2;
+    
+    c1.push('a');
+    c1.push('b');
+    c2.push('c');
+    
+    c1.swap(c2);
+    
+    cout<<c1.size()<<endl;
+    cout<<c2.size()<<endl;
+}
+
+while using constructor , with parametrized values if the user wnat to enter data into constructor ,there should be objected created for class 
+and with help of object ,values will be pushed .. but in "emplace" will automatically create
+obj and push into constructor ,don't need to create object
+
+eg:
+
+A a;
+a.push(10);
+
+emplace(10); //no obj created for emplace
+
+Queue
+
+push 
+pop
+front 
+back
+size
+swap
+emplace
+empty
+
+
+q.back() is used to print last value , others similar to Stack
+
+
+Deque::::::::::::::::::::::::::::::::::::::::::::::::::::::
+>>>>>>>>>>>>>>>>>>>>>>>>>>>no "top' is used here
+push_back()
+push_front()
+pop_back()
+pop_front()
+front()
+back()
+size()
+empty()
+emplace_back()
+emplace_front()
+clear()
+swap()
+[] indexing
+at
+insert()
+erase()
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+#include<deque>
+
+int main()
+{
+    int i;
+    deque <int> d;
+    d.push_back(10);
+    d.push_back(20);
+    d.push_back(30);
+    d.push_back(40);
+    
+    deque<int> d1={23,34,56};
+    
+    
+ //   deque <int> :: iterator 
+//  auto it=d.begin();
+    
+ //   d.insert(it+2,111);
+    
+     auto it=d.begin();
+ //  d.insert(it+2,d1.begin(),d1.end());
+ //  it=d.begin();
+ //   d.insert(it+2,3,144);
+   // d.erase(d.begin()+2);
+    d.erase(d.begin()+1,d.begin()+3);                   //d.erase(d.pop_front()) can also be used
+    d.clear();  //clear all the value but not deque
+    cout<<d.size()<<endl;
+    while(it != d.end())                    /////////////printing with pointer approach & iterator way
+    {
+        cout<<*it<<endl;
+        ++it;
+    }
+    
+  /*  int k=d.size();
+                                             ////////printing without any pointer approach
+    for(i=0;i<k;i++)
+    {
+        cout<<d[i];
+    }
+    
+    while(!d.empty())
+    {
+        cout<<d.front();
+        d.pop_front();
+    }
+    */
+    
+}
+
+
+vector()
+
+{
+    vector <int> v{11,23,45,67,91};
+    
+    for(auto it=v.begin();it!=v.end();it++)
+    {
+        cout<<" "<<*it;
+    }
+    cout<<endl;
+    for(auto pk=v.rbegin();pk!=v.rend();pk++)
+    {
+        cout<<" "<<*pk;
+    }
+    cout<<endl;
+    for(auto cr=v.cbegin();cr!=v.cend();cr++)
+    {
+        cout<<" "<<*cr;
+    }
+    
+    cout<<endl;
+    for(auto ik=v.crbegin();ik!=v.crend();ik++)
+    {
+        cout<<" "<<*ik;
+    }
+    
+    vector <int> v2;
+    
+    for(int i=0;i<6;i++)
+    {
+        v2.push_back(i);
+    }
+    
+    cout<<"size"<<v2.size()<<endl;
+    cout<<"Maxsize"<<v2.max_size()<<endl;
+    cout<<"capacity"<<v2.capacity()<<endl;
+    
+    v2.resize(4);
+    
+    cout<<"after resize"<<endl;
+    for(auto si=v2.cbegin();si!=v2.cend();si++)
+    {
+        cout<<" "<<*si;
+    }
+    cout<<"size after rellaoc"<<v2.size()<<endl;
+    
+    
+    if(v2.empty()==false)
+    {
+        cout<<"Vector is not empty"<<endl;
+    }
+    
+    v2.shrink_to_fit();
+    
+    cout<<"Final result is"<<endl;
+    
+    for(auto s=v2.begin();s!=v2.end();s++)
+    {
+        cout<<" "<<*s<<endl;
+    }
+  //  v2.assign(2,1);
+    cout<<v2.front()<<endl;
+    cout<<v2.back()<<endl;
+    cout<<v2.at(3)<<endl;
+    
+    v.swap(v2);
+    
+    cout<<"After swap"<<endl;
+    cout<<"vector"<<endl;
+    for(auto dm=v.begin();dm!=v.end();dm++)
+    {
+        cout<<" "<<*dm;
+    }
+    cout<<endl;
+    cout<<"vector2"<<endl;
+    for(auto ds=v2.begin();ds!=v2.end();ds++)
+    {
+        cout<<" "<<*ds;
+    }
+    
+    
+}
+
+
+
+o/p:::
+
+ 11 23 45 67 91
+ 91 67 45 23 11
+ 11 23 45 67 91
+ 91 67 45 23 11
+size6
+Maxsize
+2305843009213693951
+capacity8
+after resize
+ 0 1 2 3size after rellaoc4
+Vector is not empty
+Final result is
+ 0
+ 1
+ 2
+ 3
+0
+3
+3
+After swap
+vector
+ 0 1 2 3
+vector2
+ 11 23 45 67 91
+
+
+List::::
+
+#include<iostream>
+#include<list>
+
+using namespace std;
+
+int main()
+{
+    list <int> l,l1;
+    int i,j;
+    for(i=0;i<10;i++)
+    {
+        l.push_front(i*2);
+    }
+    
+    for(j=0;j<10;j++)
+    {
+        l1.push_back(j*3);
+    }
+    
+    for(auto ia=l.begin();ia!=l.end();ia++)
+    {
+        cout<<" "<<*ia;
+    }
+    cout<<endl;
+    for(auto ib=l1.begin();ib!=l1.end();ib++)
+    {
+        cout<<" "<<*ib;
+    }
+    cout<<endl;
+    l.splice(l.begin(),l1);
+   
+     for(auto ia=l.begin();ia!=l.end();ia++)
+    {
+        cout<<" "<<*ia;
+    }
+     cout<<endl;
+      l1.merge(l);
+    for(auto ib=l1.begin();ib!=l1.end();ib++)
+    {
+        cout<<" "<<*ib;
+    }
+   
+}
+
+
+
+
+o/p::::::;;
+
+ 18 16 14 12 10 8 6 4 2 0
+ 0 3 6 9 12 15 18 21 24 27
+ 0 3 6 9 12 15 18 21 24 27 18 16 14 12 10 8 6 4 2 0
+ 0 3 6 9 12 15 18 21 24 27 18 16 14 12 10 8 6 4 2 0
+
+SET::::::
+
+#include<iostream>
+#include<set>
+
+using namespace std;
+
+int main()
+{
+    set<int ,greater<int>> s;
+    
+    s.insert(10);
+    s.insert(20);
+    s.insert(30);
+    s.insert(40);
+    s.insert(50);
+    s.insert(60);
+    s.insert(30);
+    
+    for(auto it=s.begin();it!=s.end();it++)
+    {
+        cout<<" "<<*it;
+    }
+    s.erase(10);
+    cout<<endl;
+    cout<<"after erasing"<<endl;
+     for(auto it=s.begin();it!=s.end();it++)
+    {
+        cout<<" "<<*it;
+    }
+    s.find(30);
+    cout<<endl;
+     for(auto it=s.begin();it!=s.end();it++)
+    {
+        cout<<" "<<*it;
+    }
+}
+
+
+
+o/p::::::::::::::
+
+ 60 50 40 30 20 10
+after erasing
+ 60 50 40 30 20
+ 60 50 40 30 20
+
+
+map::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+
+
+
+#include<iostream>
+#include<map>
+
+using namespace std;
+int main()
+{
+    map<int,int> mp;
+    
+    mp.insert({ 1, 10});
+    mp.insert({ 2, 20});
+    mp.insert({ 3, 30});
+    mp.insert({ 4, 40});
+  mp.insert({ 5, 40});
+    mp.insert({ 6, 30});  
+	
+    
+    for(auto ia=mp.begin();ia!=mp.end();ia++)
+    {
+        cout<<ia->first<<" "<<ia->second;
+        cout<<endl;
+    }
+}
+
+
+1 10
+2 20
+3 30
+4 40
+6 30
